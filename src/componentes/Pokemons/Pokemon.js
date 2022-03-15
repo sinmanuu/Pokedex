@@ -5,7 +5,7 @@ import "./style.css";
 
 export default function Pokemon() {
 	const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
-	const estado = UseFetch(url);
+	const estado = UseFetch(url); //resultado de la api
 	const { cargando, data } = estado;
 
 	cargando ? console.log("cargando...") : console.log(data.results);
@@ -18,12 +18,8 @@ export default function Pokemon() {
 			) : (
 				<div>
 					<div className="botones">
-						<button onClick={() => setUrl(data.previous)} className="">
-							Anterior
-						</button>
-						<button onClick={() => setUrl(data.next)} className="">
-							Siguiente
-						</button>
+						<button onClick={() => setUrl(data.previous)}>Anterior</button>
+						<button onClick={() => setUrl(data.next)}>Siguiente</button>
 					</div>
 					<Cards results={data.results} />
 				</div>
