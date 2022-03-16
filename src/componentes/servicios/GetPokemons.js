@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export default function GetPokemons(url) {
-	const [resultado, setResultado] = useState({ cargando: true, data: null });
+	const [resultado, setResultado] = useState({ cargando: true, pokemon: null });
 
 	useEffect(() => {
 		getDatos(url);
@@ -9,10 +9,10 @@ export default function GetPokemons(url) {
 
 	async function getDatos(url) {
 		try {
-			setResultado({ cargando: true, data: null });
+			setResultado({ cargando: true, pokemon: null });
 			const resp = await fetch(url);
-			const data = await resp.json();
-			setResultado({ cargando: false, data });
+			const pokemon = await resp.json();
+			setResultado({ cargando: false, pokemon });
 		} catch (e) {
 			console.log(e);
 		}
